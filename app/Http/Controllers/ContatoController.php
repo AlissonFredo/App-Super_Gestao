@@ -3,28 +3,22 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\SiteContato;
 
 class ContatoController extends Controller
 {
     public function contato(Request $request){
-        /*
-        *** dd(); apresenta um array na tela e finaliza a aplicação como se fosse um die; ***
-        dd($request);
-        */
+        
+        $contato = new SiteContato();
+        $contato->nome = $request->input('nome');
+        $contato->telefone = $request->input('telefone');
+        $contato->email = $request->input('email');
+        $contato->motivo_contato = $request->input('motivo_contato');
+        $contato->mensagem = $request->input('mensagem');
 
-        /*
-        *** metodo all() recupera todos os atributos do array associativo ***
-        echo '<pre>';
-        print_r($request->all());
-        echo '</pre>';
-        */
+        //print_r($contato->getAttributes());
 
-        /*
-        *** metodo input() apresenta somente o atributo desejado do array associativo ***
-        echo $request->input('nome');
-        echo '<br>';
-        echo $request->input('nome');
-        */
+        $contato->save();
 
         return view('site.contato');
     }
