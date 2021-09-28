@@ -8,7 +8,13 @@ use App\Models\SiteContato;
 class ContatoController extends Controller
 {
     public function contato(Request $request){
-        return view('site.contato');
+        $motivo_contatos = [
+            '1' => 'Duvida',
+            '2' => 'Elogio',
+            '3' => 'Reclamação',
+        ];
+
+        return view('site.contato', ['motivo_contatos' => $motivo_contatos]);
     }
 
     public function salvar(Request $request){
