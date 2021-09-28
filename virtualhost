@@ -1,0 +1,10 @@
+<VirtualHost *:80>
+    DocumentRoot /var/www/html/App-Super-Gestao/public/
+    ServerName appsupergestao
+
+    <Directory "/var/www/html/App-Super-Gestao/public/">
+       AllowOverride All
+       Require all granted
+       Options FollowSymLinks
+    </Directory>
+</VirtualHost>
