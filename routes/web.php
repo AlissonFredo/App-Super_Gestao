@@ -5,8 +5,9 @@ use App\Http\Controllers\PrincipalController;
 use App\Http\Controllers\SobreController;
 use App\Http\Controllers\ContatoController;
 use App\Http\Controllers\FornecedorController;
+use App\Http\Middleware\LogAcessoMiddleware;
 
-Route::get('/', [PrincipalController::class, 'principal'])->name('site.index');
+Route::get('/', [PrincipalController::class, 'principal'])->name('site.index')->middleware(LogAcessoMiddleware::class);
 Route::get('/sobre', [SobreController::class, 'sobre'])->name('site.sobre');
 Route::get('/contato', [ContatoController::class, 'contato'])->name('site.contato');
 Route::post('/contato', [ContatoController::class, 'salvar'])->name('site.contato');
