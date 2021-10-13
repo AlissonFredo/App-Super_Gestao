@@ -14,8 +14,18 @@ class AutenticacaoMiddleware
      * @param  \Closure  $next
      * @return mixed
      */
-    public function handle(Request $request, Closure $next)
+    public function handle(Request $request, Closure $next, $metodo_autenticacao)
     {
+        echo $metodo_autenticacao.'<br>';
+
+        if($metodo_autenticacao == 'padrao') {
+            echo 'verificar o usuario e senha no banco de dados<br>';
+        }
+
+        if($metodo_autenticacao == 'idap') {
+            echo 'verificar o usuario e senha no AD<br>';
+        }
+
         if(true) {
             return $next($request);
         } else {
