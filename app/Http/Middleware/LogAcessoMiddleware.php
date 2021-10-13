@@ -21,6 +21,8 @@ class LogAcessoMiddleware
         $rota = $request->getRequestUri();
 
         LogAcesso::create(['log' => "IP $ip requisitou a rota $rota"]);
-        return response('chegamos no middleware e finalizamos no próprio middleware');
+
+        return $next($request);
+        //return response('chegamos no middleware e finalizamos no próprio middleware');
     }
 }
